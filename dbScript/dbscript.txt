@@ -1,0 +1,37 @@
+CREATE TABLE tblZone (
+    zoneID smallint NOT NULL IDENTITY (1,1) PRIMARY KEY,
+    name varchar(255),
+    isDisable bit,
+    createdDate smallDateTime DEFAULT GETDATE(),
+
+);
+
+
+
+select e.StateID, s.StateName,  (count(*)/4) as TotalHospitals,  sum(PotentialTarget) as PotentialTarget from tblEmployees e 
+INNER join tblState s on s.stateId = e.StateID
+INNER join tblEmpHospitals eh on eh.empID = e.EmpID 
+INNER join tblHospitals h on  h.hospitalId = eh.hospitalId and h.isDisabled = 0
+INNER join tblMedHospitalsTargets mdh on mdh.hospitalId = h.hospitalId
+-- where e.StateID = 15 
+group by e.StateID, s.StateName
+--order by s.statename ASC
+
+
+
+ns-1744.awsdns-26.co.uk.
+ns-70.awsdns-08.com.
+ns-1387.awsdns-45.org.
+ns-842.awsdns-41.net.
+
+
+ns-1744.awsdns-26.co.uk.
+ns-70.awsdns-08.com.
+ns-1387.awsdns-45.org.
+ns-842.awsdns-41.net.
+
+
+ns-1744.awsdns-26.co.uk
+ns-70.awsdns-08.com
+ns-1387.awsdns-45.org
+ns-842.awsdns-41.net
